@@ -1,4 +1,4 @@
-Summary:	CUPS backend wrapper which can capture print datas before they are sent to a printer and process
+Summary:	Tea4CUPS is the Swiss Army's knife of the CUPS Administrator
 Summary(pl.UTF-8):	Sterownik CUPS pozwalający przechwycić zadanie i przetworzyć
 Name:		tea4cups
 Version:	3.12
@@ -12,6 +12,7 @@ Source0:	%{name}-%{version}.tar.bz2
 URL:		http://www.pykota.com/software/tea4cups
 BuildRequires:	cups-devel
 BuildRequires:	rpm-pythonprov
+BuildRequires:	sed >= 4.0
 Requires:	cups >= 1:1.2.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -20,9 +21,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_libdir		%(cups-config --serverbin 2>/dev/null)
 
 %description
-Tea4CUPS is a CUPS backend wrapper which can capture print datas
-before they are sent to a printer and process, duplicate or dispatch
-them in a number of ways.
+Tea4CUPS is a CUPS backend wrapper which can capture print data before
+it is sent to a printer and process, duplicate or dispatch it in a
+number of ways.
 
 %description -l pl.UTF-8
 Sterownik CUPS pozwalający przechwycić zadanie przed wysłaniem do
@@ -31,12 +32,13 @@ sposób.
 
 %prep
 %setup -q
+%{__sed} -i -e '1s,#!.*python,#!%{__python},' %{name}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_libdir}/backend}
-install -p tea4cups $RPM_BUILD_ROOT%{_libdir}/backend/%{name}
-cp -a tea4cups.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.conf
+install -p %{name} $RPM_BUILD_ROOT%{_libdir}/backend/%{name}
+cp -a %{name}.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
