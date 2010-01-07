@@ -17,10 +17,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		cups_serverbin	%{_prefix}/lib/cups
 
 %description
-Tea4CUPS is a CUPS backend wrapper which can capture print datas before they are sent to a printer and process, duplicate or dispatch them in a number of ways.
+Tea4CUPS is a CUPS backend wrapper which can capture print datas
+before they are sent to a printer and process, duplicate or dispatch
+them in a number of ways.
 
 %description -l pl.UTF-8
-Sterownik CUPS pozwalający przechwycić zadanie przed wysłaniem do drukarki żeby przetworzyć, zduplikować lub przekierować na dowolny sposób.
+Sterownik CUPS pozwalający przechwycić zadanie przed wysłaniem do
+drukarki żeby przetworzyć, zduplikować lub przekierować na dowolny
+sposób.
 
 %prep
 %setup -q
