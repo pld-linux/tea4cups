@@ -1,14 +1,15 @@
 Summary:	Tea4CUPS is the Swiss Army's knife of the CUPS Administrator
 Summary(pl.UTF-8):	Sterownik CUPS pozwalający przechwycić zadanie i przetworzyć
 Name:		tea4cups
-Version:	3.12
+Version:	3.12.r3565
 Release:	1
 License:	GPL v2
 Group:		Applications/Printing
 # NOTE: from svn:
 # svn co http://svn.pykota.com/tea4cups/tags/3.12/
+# svn co http://svn.pykota.com/tea4cups/trunk
 Source0:	%{name}-%{version}.tar.bz2
-# Source0-md5:	5c3b832d1bbbc1495bf2e47acc7b12eb
+# Source0-md5:	fc72bc5243f25a4cf40040a1ad83618f
 URL:		http://www.pykota.com/software/tea4cups
 BuildRequires:	cups-devel
 BuildRequires:	rpm-pythonprov
@@ -47,4 +48,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CREDITS README NEWS TODO
 %attr(644,lp,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.conf
-%attr(755,root,root) %{_libdir}/backend/%{name}
+%attr(700,root,root) %{_libdir}/backend/%{name}
